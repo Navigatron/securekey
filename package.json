@@ -1,0 +1,14 @@
+{
+  "name": "securekey",
+  "version": "0.0.1",
+  "description": "Interact with IDTech SecureKey m100 and m130 credit card readers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ethan Witherington",
+  "license": "MIT",
+  "dependencies": {
+    "usb": "^1.6.1"
+  }
+}
