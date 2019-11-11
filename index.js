@@ -37,13 +37,6 @@ const settings = {
 		writeable: true,
 		// segments
 	},
-	SERIAL_NUMBER: {
-		id: 0x4E,
-		readable: true,
-		writeable: false,
-		// How to say that segment should be ascii?
-		// Don't match against an option?
-	},
 	MSR_READING: {
 		id: 0x1A,
 		options: {
