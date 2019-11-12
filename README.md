@@ -1,6 +1,13 @@
 # Securekey
 
-Interact with IDTech Securekey m100 and m130 devices
+Send commands to credit card readers! Read settings, change settings, cause mayhem.
+
+Supported devices:
+
+- IDTech SecureKey m100
+- IDTech SecureKey m130
+
+The IDTech SREDKey uses *almost* identical firmware, so this might work there as well. (You'll need to change the productID constant though)
 
 ## Installation
 
@@ -73,26 +80,13 @@ const sk = require('securekey');
 console.log(sk.settings.FIRMWARE_VERSION);
 ```
 
-- FIRMWARE_VERSION
+There are too many settings to list here. Open `settings.js` for a complete list.
+
+Settings of note:
+
+- `ALL_SETTINGS`
 	- read-only
-	- returns a string in `response.body.ascii`
-- SERIAL_NUMBER
-	- read-only
-	- response in `response.body.segments[0].payload.ascii`
-- ALL_SETTINGS
-	- read-only
-	- `response.body.segments` is an array of all returned segments.
-		- Each segment contains a function object and payload object
-- RESET_TO_DEFAULT
-	- write-only
-	- resets most settings to their default values
-- MSR_READING
-	- read/write
-	- Turns the magnetic stripe reader on/off
-	- (only reading has been implemented as of now)
-- DECODING_METHOD
-	- read/write
-	- How does the MSR decode swipes?
+	- returns the current value of most settings
 
 ## Response Format
 
@@ -127,3 +121,7 @@ response = {
 	}
 };
 ```
+
+## Key Injection
+
+It looks like keys need to be encrypted with the devices 'public key'. Once I find that, I can work on this.

@@ -12,52 +12,15 @@ const productID = 9744;
 // time in ms for libusb to wait for a response
 const timeout = 2500;
 
-const settings = {
-	FIRMWARE_VERSION: {
-		id: 0x22,
-		readable: true,
-		writeable: false,
-		// ascii
-	},
-	SERIAL_NUMBER: {
-		id: 0x4E,
-		readable: true,
-		writeable: false,
-		// ascii
-	},
-	ALL_SETTINGS: {
-		id: 0x1F,
-		readable: true,
-		writeable: false,
-		// segments
-	},
-	RESET_TO_DEFAULT: {
-		id: 0x18,
-		readable: false,
-		writeable: true,
-		// segments
-	},
-	MSR_READING: {
-		id: 0x1A,
-		options: {
-			ENABLED: '1'.charCodeAt(0),
-			DISABLED: '0'.charCodeAt(0)
-		},
-		readable: true,
-		writeable: true
-	},
-	DECODING_METHOD: {
-		id: 0x1D,
-		options: {
-			RAW_BOTH_DIRECTIONS: '0'.charCodeAt(0),
-			DECODE_BOTH_DIRECTIONS: '1'.charCodeAt(0), // default
-			STRIPE_MOVING_WITH_ENCODING: '2'.charCodeAt(0),
-			STRIPE_MOVING_AGAINST_ENCODING: '3'.charCodeAt(0)
-		},
-		readable: true,
-		writeable: true
-	}
-};
+const settings = require('./settings.js');
+
+/*
+Here's some interesting things:
+set DvcType: 53 77 53 4B 5C 0B [11 bytes]
+set DvcApp: 53 77 53 4B 5D 12 [18 bytes]
+set DvcMsgVer: 53 77 53 4B 5E 03 [3 bytes]
+set AppVer: 53 77 53 4B 5F 03 [3 bytes]
+*/
 
 // Global State
 
